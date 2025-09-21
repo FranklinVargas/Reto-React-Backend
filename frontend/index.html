@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de gestión</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>Panel de gestión</h1>
+        <p class="muted">
+          Administra productos, genera pedidos y sincroniza toda la información
+          desde una única interfaz conectada al backend.
+        </p>
+      </header>
+
+      <div id="global-error" class="error-message hidden"></div>
+
+      <div id="loading">Cargando datos...</div>
+
+      <div id="content" class="sections hidden">
+        <section class="card" id="products-section">
+          <div>
+            <h2>Productos</h2>
+            <p class="muted">Crea y administra el catálogo disponible para la venta.</p>
+          </div>
+
+          <form id="product-form">
+            <div>
+              <label for="product-name">Nombre</label>
+              <input id="product-name" name="name" type="text" placeholder="Ej. Laptop Dell Inspiron" required />
+            </div>
+            <div>
+              <label for="product-price">Precio unitario</label>
+              <input id="product-price" name="unitPrice" type="number" step="0.01" min="0" placeholder="Ej. 12999" required />
+            </div>
+            <button class="primary" type="submit">Agregar producto</button>
+          </form>
+
+          <div class="list" id="product-list"></div>
+        </section>
+
+        <section class="card" id="orders-section">
+          <div>
+            <h2>Pedidos</h2>
+            <p class="muted">
+              Genera pedidos seleccionando productos existentes y define su estado en tiempo real.
+            </p>
+          </div>
+
+          <form id="order-form">
+            <div>
+              <label for="order-number">Folio del pedido</label>
+              <input id="order-number" name="orderNumber" type="text" placeholder="Ej. PED-00045" required />
+            </div>
+
+            <div class="order-items">
+              <label>Productos</label>
+              <div id="order-items"></div>
+              <button type="button" id="add-order-item" class="primary">Añadir producto</button>
+            </div>
+
+            <div class="order-summary" id="order-summary">
+              <span>0 artículos</span>
+              <span>$0.00</span>
+            </div>
+
+            <button class="primary" type="submit">Crear pedido</button>
+          </form>
+
+          <div class="list" id="order-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
